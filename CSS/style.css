@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    padding: 2rem;
+    transition: background 0.5s;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+header h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    font-weight: 400;
+    color: #555;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+select, button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: all 0.3s;
+}
+
+button {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#palette {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.color-box {
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.color-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.color-code {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    color: #555;
+}
+#lockBtn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+
+}
+
+#lockBtn:hover, #lockBtn:focus {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+·lockBtn.locked {
+    background: linear-gradient(135deg, #333, #555);
+    cursor: not-allowed;
+}
