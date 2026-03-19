@@ -4,35 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Paleta de Colores</title>
+
+    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../CSS/style.css">
 </head>
+
 <body>
+
     <header>
-        <h1>Generador</h1>
-        <p>Elige el tamaño y crea tu paleta de colores única</p>
+        <h1>Generador de Paleta de Colores</h1>
+        <p>Elegí el tamaño y creá tu paleta única</p>
     </header>
 
     <main>
-        <section class="controls" aria-labelledby="controls">
-            <h2 id="controls">Controles</h2>
+
+        <!-- CONTROLES -->
+        <section class="controls" aria-labelledby="controls-title">
+            <h2 id="controls-title">Controles</h2>
+
+            <!-- Tamaño -->
             <label for="paletteSize">Tamaño de la paleta:</label>
             <select id="paletteSize">
                 <option value="6">6 colores</option>
                 <option value="8">8 colores</option>
                 <option value="9">9 colores</option>
             </select>
-            <button id="generateBtn">Generar paleta</button>
-            <button id="copyBtn">copiar código</button> 
+
+            <!-- Formato -->
+            <label for="formatSelect">Formato:</label>
+            <select id="formatSelect">
+                <option value="hex">HEX</option>
+                <option value="hsl">HSL</option>
+            </select>
+
+            <!-- Botones -->
+            <button id="generateBtn" type="button">
+                Generar paleta
+            </button>
+
+            <button id="copyBtn" type="button">
+                Copiar código
+            </button>
         </section>
 
+        <!-- PALETA -->
         <section id="palette" aria-live="polite"></section>
+
     </main>
 
     <footer>
-        <p>Proyecto paletas de colores</p>
+        <p>Proyecto Paletas de Colores</p>
     </footer>
 
+    <!-- JS -->
     <script src="../JS/script.js"></script>
+
 </body>
 </html>
