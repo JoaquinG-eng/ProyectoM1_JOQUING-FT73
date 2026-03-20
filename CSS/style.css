@@ -151,3 +151,25 @@ footer {
     color: white;
     font-weight: bold;
 }
+
+
+.preview-section {
+    text-align: center;
+    margin: 60px auto;
+}
+
+.preview-section h2 {
+    margin-bottom: 40px;
+}
+
+.preview-img {
+    width: 90%;
+    max-width: 1500px;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.preview-img:hover {
+    transform: scale(1.02);
+}

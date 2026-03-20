@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Paleta de Colores</title>
 
-    <!-- Fuente -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 
@@ -21,11 +21,11 @@
 
     <main>
 
-        <!-- CONTROLES -->
+        
         <section class="controls" aria-labelledby="controls-title">
             <h2 id="controls-title">Controles</h2>
 
-            <!-- Tamaño -->
+            
             <label for="paletteSize">Tamaño de la paleta:</label>
             <select id="paletteSize">
                 <option value="6">6 colores</option>
@@ -33,26 +33,31 @@
                 <option value="9">9 colores</option>
             </select>
 
-            <!-- Formato -->
+            
             <label for="formatSelect">Formato:</label>
             <select id="formatSelect">
                 <option value="hex">HEX</option>
                 <option value="hsl">HSL</option>
             </select>
 
-            <!-- Botones -->
+    
             <button id="generateBtn" type="button">
                 Generar paleta
             </button>
 
-            <button id="copyBtn" type="button">
-                Copiar código
-            </button>
         </section>
 
-        <!-- PALETA -->
+    
         <section id="palette" aria-live="polite"></section>
+        <section class="preview-section">
+    <h2>Explicacion de la funcionalidad</h2>
 
+    <img 
+        src="ASSETS/capturas/preview.png" 
+        alt="Generador de Paleta de Colores"
+        class="preview-img"
+    >
+</section>
     </main>
 
     <footer>

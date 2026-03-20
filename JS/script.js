@@ -1,27 +1,16 @@
-// ==============================
-// ELEMENTOS DEL DOM
-// ==============================
+
 const paletteContainer = document.getElementById("palette");
 const generateBtn = document.getElementById("generateBtn");
 const paletteSizeSelect = document.getElementById("paletteSize");
 const formatSelect = document.getElementById("formatSelect");
 
-
-// ==============================
-// RESET AL CAMBIAR CANTIDAD
-// ==============================
 paletteSizeSelect.addEventListener("change", () => {
     paletteContainer.innerHTML = "";
     paletteContainer.style.background = "#ffffff";
 });
 
-// regenerar al cambiar formato
 formatSelect.addEventListener("change", generatePalette);
 
-
-// ==============================
-// COLOR ALEATORIO
-// ==============================
 function randomColor() {
 
     const h = Math.floor(Math.random() * 360);
@@ -36,10 +25,6 @@ function randomColor() {
     };
 }
 
-
-// ==============================
-// HSL → HEX
-// ==============================
 function hslToHex(h, s, l) {
 
     s /= 100;
@@ -67,10 +52,6 @@ function hslToHex(h, s, l) {
         .slice(1)}`;
 }
 
-
-// ==============================
-// TOOLTIP
-// ==============================
 function showTooltip(element, text) {
 
     const tooltip = document.createElement("div");
@@ -87,10 +68,6 @@ function showTooltip(element, text) {
     }, 1500);
 }
 
-
-// ==============================
-// GENERAR PALETA
-// ==============================
 function generatePalette() {
 
     paletteContainer.style.background = "transparent";
@@ -98,7 +75,7 @@ function generatePalette() {
     const size = parseInt(paletteSizeSelect.value);
     const format = formatSelect.value;
 
-    // guardar colores bloqueados
+    
     const existingBoxes = paletteContainer.querySelectorAll(".color-box");
     const lockedColors = [];
 
@@ -122,20 +99,18 @@ function generatePalette() {
 
         const text = format === "hex" ? color.hex : color.hsl;
 
-        // código visible
+        
         const codeSpan = document.createElement("div");
         codeSpan.className = "color-code";
         codeSpan.textContent = text;
         colorBox.appendChild(codeSpan);
 
-        // dataset
+        
         colorBox.dataset.hsl = color.hsl;
         colorBox.dataset.hex = color.hex;
         colorBox.dataset.locked = lockedColors[i] ? "true" : "false";
 
-        // ==================
-        // BOTÓN LOCK
-        // ==================
+        
         const lockBtn = document.createElement("button");
         lockBtn.className = "lock-btn";
 
@@ -153,9 +128,7 @@ function generatePalette() {
 
         colorBox.appendChild(lockBtn);
 
-        // ==================
-        // COPIAR COLOR
-        // ==================
+    
         colorBox.addEventListener("click", () => {
 
             const valueToCopy =
@@ -171,11 +144,6 @@ function generatePalette() {
     }
 }
 
-
-// ==============================
-// EVENTOS
-// ==============================
 generateBtn.addEventListener("click", generatePalette);
 
-// generar al iniciar
 generatePalette();
