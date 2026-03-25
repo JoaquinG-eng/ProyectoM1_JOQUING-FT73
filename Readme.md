@@ -1,4 +1,4 @@
-ProyectoM1 — Generador de Paleta de Colores
+ProyectoM1_JOAQUING FT73 — Generador de Paleta de Colores
 
 Aplicación web interactiva desarrollada como MVP para generar paletas de colores automáticas y visualizar sus códigos en distintos formatos útiles para diseño y desarrollo web.
 
