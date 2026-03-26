@@ -4,12 +4,39 @@ const generateBtn = document.getElementById("generateBtn");
 const paletteSizeSelect = document.getElementById("paletteSize");
 const formatSelect = document.getElementById("formatSelect");
 
+
+function showGlobalTooltip(message) {
+
+    let tooltip = document.getElementById("global-tooltip");
+
+    if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.id = "global-tooltip";
+        document.body.appendChild(tooltip);
+    }
+
+    tooltip.textContent = message;
+    tooltip.classList.add("show");
+
+    setTimeout(() => {
+        tooltip.classList.remove("show");
+    }, 1800);
+}
+
+
+
 paletteSizeSelect.addEventListener("change", () => {
     paletteContainer.innerHTML = "";
     paletteContainer.style.background = "#ffffff";
+
+    showGlobalTooltip("Tamaño de paleta cambiado");
 });
 
-formatSelect.addEventListener("change", generatePalette);
+
+formatSelect.addEventListener("change", () => {
+    generatePalette();
+    showGlobalTooltip(" Formato cambiado");
+});
 
 function randomColor() {
 
@@ -24,6 +51,7 @@ function randomColor() {
         hex: hslToHex(h, s, l)
     };
 }
+
 
 function hslToHex(h, s, l) {
 
@@ -75,7 +103,6 @@ function generatePalette() {
     const size = parseInt(paletteSizeSelect.value);
     const format = formatSelect.value;
 
-    
     const existingBoxes = paletteContainer.querySelectorAll(".color-box");
     const lockedColors = [];
 
@@ -105,7 +132,7 @@ function generatePalette() {
         codeSpan.textContent = text;
         colorBox.appendChild(codeSpan);
 
-        
+
         colorBox.dataset.hsl = color.hsl;
         colorBox.dataset.hex = color.hex;
         colorBox.dataset.locked = lockedColors[i] ? "true" : "false";
@@ -124,11 +151,15 @@ function generatePalette() {
             const locked = lockBtn.classList.toggle("locked");
             colorBox.dataset.locked = locked ? "true" : "false";
             lockBtn.innerHTML = locked ? "🔒" : "🔓";
+
+            showGlobalTooltip(
+                locked ? "🔒 Color bloqueado" : "🔓 Color desbloqueado"
+            );
         });
 
         colorBox.appendChild(lockBtn);
 
-    
+        
         colorBox.addEventListener("click", () => {
 
             const valueToCopy =
@@ -142,6 +173,8 @@ function generatePalette() {
 
         paletteContainer.appendChild(colorBox);
     }
+
+    showGlobalTooltip("✨ Nueva paleta generada");
 }
 
 generateBtn.addEventListener("click", generatePalette);
