@@ -174,7 +174,7 @@ function generatePalette() {
         paletteContainer.appendChild(colorBox);
     }
 
-    showGlobalTooltip("✨ Nueva paleta generada");
+    showGlobalTooltip("Nueva paleta generada");
 }
 
 generateBtn.addEventListener("click", generatePalette);
