@@ -82,19 +82,14 @@ Manual Técnico (Decisiones técnicas)
 
 Ejecutar la aplicación en local
 
-1. Clonar el repositorio:
 
-bash
-git clone https://github.com/JoaquinG-eng/ProyectoM1_JOQUING-FT73.git
-```
-
-2. Entrar al proyecto:
+1. Entrar al proyecto:
 
 bash
 cd ProyectoM1_JOQUING-FT73
 
 
-3. Abrir el archivo `index.html` en el navegador.
+2. Abrir el archivo `index.html` en el navegador.
 
 Despliegue en GitHub Pages
 
@@ -110,8 +105,6 @@ Pasos para desplegar
 5. Guardar cambios.
 
 
-Demo (MVP)
 
-https://joaquing-eng.github.io/ProyectoM1_JOQUING-FT73/
 
 Autor: Joaquín Gonzalez FT73
