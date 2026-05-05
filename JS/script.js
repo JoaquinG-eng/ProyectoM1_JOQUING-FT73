@@ -1,9 +1,12 @@
-
-const paletteContainer = document.getElementById("palette");
+    const paletteContainer = document.getElementById("palette");
 const generateBtn = document.getElementById("generateBtn");
 const paletteSizeSelect = document.getElementById("paletteSize");
 const formatSelect = document.getElementById("formatSelect");
 
+
+// =========================
+// TOOLTIP GLOBAL
+// =========================
 
 function showGlobalTooltip(message) {
 
@@ -24,8 +27,12 @@ function showGlobalTooltip(message) {
 }
 
 
+// =========================
+// EVENTOS DE CONTROLES
+// =========================
 
 paletteSizeSelect.addEventListener("change", () => {
+
     paletteContainer.innerHTML = "";
     paletteContainer.style.background = "#ffffff";
 
@@ -34,9 +41,16 @@ paletteSizeSelect.addEventListener("change", () => {
 
 
 formatSelect.addEventListener("change", () => {
+
     generatePalette();
-    showGlobalTooltip(" Formato cambiado");
+
+    showGlobalTooltip("Formato cambiado");
 });
+
+
+// =========================
+// GENERACIÓN DE COLORES
+// =========================
 
 function randomColor() {
 
@@ -53,6 +67,10 @@ function randomColor() {
 }
 
 
+// =========================
+// CONVERSIÓN HSL → HEX
+// =========================
+
 function hslToHex(h, s, l) {
 
     s /= 100;
@@ -62,14 +80,34 @@ function hslToHex(h, s, l) {
     const x = c * (1 - Math.abs((h / 60) % 2 - 1));
     const m = l - c / 2;
 
-    let r = 0, g = 0, b = 0;
+    let r = 0;
+    let g = 0;
+    let b = 0;
 
-    if (h < 60) { r = c; g = x; }
-    else if (h < 120) { r = x; g = c; }
-    else if (h < 180) { g = c; b = x; }
-    else if (h < 240) { g = x; b = c; }
-    else if (h < 300) { r = x; b = c; }
-    else { r = c; b = x; }
+    if (h < 60) {
+        r = c;
+        g = x;
+    }
+    else if (h < 120) {
+        r = x;
+        g = c;
+    }
+    else if (h < 180) {
+        g = c;
+        b = x;
+    }
+    else if (h < 240) {
+        g = x;
+        b = c;
+    }
+    else if (h < 300) {
+        r = x;
+        b = c;
+    }
+    else {
+        r = c;
+        b = x;
+    }
 
     r = Math.round((r + m) * 255);
     g = Math.round((g + m) * 255);
@@ -80,21 +118,39 @@ function hslToHex(h, s, l) {
         .slice(1)}`;
 }
 
+
+// =========================
+// TOOLTIP INDIVIDUAL
+// =========================
+
 function showTooltip(element, text) {
 
     const tooltip = document.createElement("div");
+
     tooltip.className = "tooltip";
     tooltip.textContent = text;
 
     element.appendChild(tooltip);
 
-    setTimeout(() => tooltip.classList.add("show"), 10);
+    setTimeout(() => {
+        tooltip.classList.add("show");
+    }, 10);
 
     setTimeout(() => {
+
         tooltip.classList.remove("show");
-        setTimeout(() => element.removeChild(tooltip), 300);
+
+        setTimeout(() => {
+            element.removeChild(tooltip);
+        }, 300);
+
     }, 1500);
 }
+
+
+// =========================
+// GENERAR PALETA
+// =========================
 
 function generatePalette() {
 
@@ -104,12 +160,18 @@ function generatePalette() {
     const format = formatSelect.value;
 
     const existingBoxes = paletteContainer.querySelectorAll(".color-box");
+
     const lockedColors = [];
 
     existingBoxes.forEach(box => {
+
         lockedColors.push(
+
             box.dataset.locked === "true"
-                ? { hsl: box.dataset.hsl, hex: box.dataset.hex }
+                ? {
+                    hsl: box.dataset.hsl,
+                    hex: box.dataset.hex
+                }
                 : null
         );
     });
@@ -120,46 +182,124 @@ function generatePalette() {
 
         const color = lockedColors[i] || randomColor();
 
+        // =========================
+        // CONTENEDOR COLOR
+        // =========================
+
         const colorBox = document.createElement("div");
+
         colorBox.className = "color-box";
         colorBox.style.backgroundColor = color.hsl;
 
-        const text = format === "hex" ? color.hex : color.hsl;
+        colorBox.dataset.hsl = color.hsl;
+        colorBox.dataset.hex = color.hex;
+        colorBox.dataset.locked = lockedColors[i]
+            ? "true"
+            : "false";
 
-        
+
+        // =========================
+        // TEXTO DEL COLOR
+        // =========================
+
+        const text = format === "hex"
+            ? color.hex
+            : color.hsl;
+
         const codeSpan = document.createElement("div");
+
         codeSpan.className = "color-code";
         codeSpan.textContent = text;
+
         colorBox.appendChild(codeSpan);
 
 
-        colorBox.dataset.hsl = color.hsl;
-        colorBox.dataset.hex = color.hex;
-        colorBox.dataset.locked = lockedColors[i] ? "true" : "false";
+        // =========================
+        // BOTÓN DE BLOQUEO
+        // =========================
 
-        
         const lockBtn = document.createElement("button");
+
         lockBtn.className = "lock-btn";
 
-        const isLocked = colorBox.dataset.locked === "true";
-        lockBtn.innerHTML = isLocked ? "🔒" : "🔓";
-        if (isLocked) lockBtn.classList.add("locked");
+        // ACCESIBILIDAD
+        lockBtn.setAttribute(
+            "aria-label",
+            "Bloquear color"
+        );
+
+        const isLocked =
+            colorBox.dataset.locked === "true";
+
+        lockBtn.innerHTML = isLocked
+            ? "🔒"
+            : "🔓";
+
+        if (isLocked) {
+            lockBtn.classList.add("locked");
+
+            lockBtn.setAttribute(
+                "aria-label",
+                "Desbloquear color"
+            );
+        }
+
+
+        // CLICK BLOQUEO
 
         lockBtn.addEventListener("click", (e) => {
+
             e.stopPropagation();
 
-            const locked = lockBtn.classList.toggle("locked");
-            colorBox.dataset.locked = locked ? "true" : "false";
-            lockBtn.innerHTML = locked ? "🔒" : "🔓";
+            const locked =
+                lockBtn.classList.toggle("locked");
+
+            colorBox.dataset.locked = locked
+                ? "true"
+                : "false";
+
+            lockBtn.innerHTML = locked
+                ? "🔒"
+                : "🔓";
+
+            // ACCESIBILIDAD DINÁMICA
+            lockBtn.setAttribute(
+                "aria-label",
+                locked
+                    ? "Desbloquear color"
+                    : "Bloquear color"
+            );
 
             showGlobalTooltip(
-                locked ? "🔒 Color bloqueado" : "🔓 Color desbloqueado"
+                locked
+                    ? "🔒 Color bloqueado"
+                    : "🔓 Color desbloqueado"
             );
+        });
+
+
+        // ACCESIBILIDAD TECLADO
+
+        lockBtn.addEventListener("keydown", (e) => {
+
+            if (
+                e.key === "Enter" ||
+                e.key === " "
+            ) {
+
+                e.preventDefault();
+
+                lockBtn.click();
+            }
         });
 
         colorBox.appendChild(lockBtn);
 
-        
+
+        // =========================
+        // COPIAR COLOR
+        // =========================
+
         colorBox.addEventListener("click", () => {
 
             const valueToCopy =
@@ -168,7 +308,11 @@ function generatePalette() {
                     : color.hsl;
 
             navigator.clipboard.writeText(valueToCopy);
-            showTooltip(colorBox, "¡Copiado!");
+
+            showTooltip(
+                colorBox,
+                "¡Copiado!"
+            );
         });
 
         paletteContainer.appendChild(colorBox);
@@ -177,6 +321,19 @@ function generatePalette() {
     showGlobalTooltip("Nueva paleta generada");
 }
 
-generateBtn.addEventListener("click", generatePalette);
+
+// =========================
+// EVENTO PRINCIPAL
+// =========================
+
+generateBtn.addEventListener(
+    "click",
+    generatePalette
+);
+
+
+// =========================
+// GENERACIÓN INICIAL
+// =========================
 
 generatePalette();
