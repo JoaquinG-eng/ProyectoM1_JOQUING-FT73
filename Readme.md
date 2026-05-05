@@ -1,120 +1,73 @@
-# ProyectoM1_JOAQUING FT73 — Generador de Paleta de Colores
+# Generador de Paleta de Colores
 
-Aplicación web interactiva desarrollada como MVP para generar paletas de colores automáticas y visualizar sus códigos en distintos formatos útiles para diseño y desarrollo web.
-
----
-
-# Repositorio
-
-- Nombre del repositorio: `ProyectoM1_JOAQUING-FT73`
-- Visibilidad: Público en GitHub
-- Historial: Commits claros y descriptivos siguiendo buenas prácticas
+Aplicación web interactiva desarrollada para generar paletas de colores automáticas y visualizar sus códigos en distintos formatos útiles para diseño y desarrollo web.
 
 ---
 
-# Código fuente del proyecto
+# 🚀 Funcionalidades
 
-## Tecnologías utilizadas
-
-- HTML5 semántico
-- CSS3
-- JavaScript ES6
-
----
-
-# Buenas prácticas implementadas
-
-## HTML
-
-- Uso de etiquetas semánticas (`header`, `main`, `section`, `button`, `footer`)
-- Asociación correcta de `label` con inputs
-- Estructura clara y accesible
-- Uso de atributos `aria-label` y `aria-live`
+- Generación dinámica de paletas de colores
+- Soporte para formatos HEX, HSL y RGBA
+- Bloqueo individual de colores
+- Copiado automático al portapapeles
+- Interfaz responsive
+- Render dinámico según el tamaño seleccionado
+- Feedback visual e interacciones modernas
 
 ---
 
-## CSS
+# 🎨 Formatos de color disponibles
 
-- Organización modular del estilo
-- Uso consistente de clases
-- Diseño responsive con Grid y Flexbox
-- Focus visible para accesibilidad
-- Animaciones y microinteracciones modernas
-
----
-
-## JavaScript
-
-- Manipulación dinámica del DOM
-- Funciones reutilizables y separadas por responsabilidad
-- Render dinámico de paletas
-- Eventos organizados correctamente
-- Conversión automática de formatos de color
-
----
-
-# Features / Funcionalidades
-
-## Generación de colores aleatorios en formatos:
-
-- HSL
 - HEX
+- HSL
 - RGBA
 
 ---
 
-## Selección del tamaño de la paleta:
+# 🛠 Tecnologías utilizadas
 
-- 6 colores
-- 8 colores
-- 9 colores
-
----
-
-## Funcionalidades principales
-
-- Visualización individual de cada color junto a su código
-- Botón "Generar paleta" completamente operativo
-- Copiado automático al portapapeles
-- Bloqueo individual de colores
-- Render dinámico según el tamaño seleccionado
+- HTML5
+- CSS3
+- JavaScript (ES6)
 
 ---
 
-# Microfeedback al usuario
+# ⚙ Aspectos técnicos destacados
 
-- Tooltips animados
-- Toasts de confirmación
-- Feedback visual de bloqueo/desbloqueo
-- Estados hover y focus
+- Manipulación dinámica del DOM utilizando JavaScript
+- Arquitectura reutilizable para el renderizado de componentes
+- Generación armónica de colores mediante HSL
+- Conversión automática de HSL → HEX
+- Organización modular y escalable del proyecto
+- Diseño responsive utilizando Flexbox y Grid
+- Microinteracciones y animaciones modernas
 
 ---
 
-# Accesibilidad
+# ♿ Accesibilidad
 
 ## Implementaciones realizadas
 
-- Labels asociados correctamente
-- Contraste suficiente
-- Foco visible en elementos interactivos
-- Compatibilidad básica con teclado
-- Uso de `aria-label` en botones dinámicos
-- Uso de `aria-live="polite"` para contenido dinámico
+- Uso de HTML semántico
+- Navegación básica mediante teclado
+- Estados focus visibles
+- Uso de `aria-label` en elementos dinámicos
+- Actualización dinámica mediante `aria-live`
 
 ---
 
-# Algoritmo de conversión HSL → HEX
+# 🧠 Algoritmo de conversión HSL → HEX
 
-La aplicación genera colores aleatorios utilizando el modelo HSL (Hue, Saturation, Lightness).
+La aplicación genera colores aleatorios utilizando el modelo HSL (Hue, Saturation, Lightness) para obtener combinaciones visualmente armónicas.
 
-Posteriormente, cada color es convertido automáticamente a formato HEX mediante un algoritmo matemático implementado en JavaScript.
+Posteriormente, cada color es convertido automáticamente a formato HEX mediante un algoritmo implementado en JavaScript.
 
 ## Proceso de conversión
 
-1. Se normalizan los valores de saturación y luminosidad.
-2. Se calculan los componentes RGB temporales.
-3. Los valores RGB son convertidos a hexadecimal.
-4. Finalmente se construye el código HEX final.
+1. Normalización de saturación y luminosidad.
+2. Cálculo temporal de componentes RGB.
+3. Conversión de RGB a hexadecimal.
+4. Construcción final del código HEX.
 
 ### Ejemplo
 
@@ -122,43 +75,73 @@ Posteriormente, cada color es convertido automáticamente a formato HEX mediante
 HSL:
 hsl(210, 80%, 60%)
 
-Resultado HEX:
+HEX:
 #4da6ff
+```
 
+---
 
-Manual de Usuario
-Instrucciones de uso
-Seleccionar el tamaño de la paleta desde el menú desplegable.
-Elegir el formato de color (HEX, HSL o RGBA).
-Presionar el botón "Generar paleta".
-Visualizar los colores generados automáticamente.
-Bloquear colores individuales si se desean conservar.
-Hacer clic sobre un color para copiar su código automáticamente.
-Manual Técnico (Decisiones técnicas)
-Se utilizó JavaScript para comprender la manipulación directa del DOM.
-Los colores se generan mediante cálculos aleatorios en HSL para obtener combinaciones armónicas.
-Conversión dinámica entre formatos de color.
-Separación del proyecto en carpetas para mejorar escalabilidad.
-Diseño orientado a un MVP funcional y extensible.
-Se implementó render dinámico reutilizable para facilitar futuras mejoras.
-La accesibilidad fue considerada desde la estructura HTML y los componentes interactivos.
-Ejecutar la aplicación en local
-1. Entrar al proyecto
-cd ProyectoM1_JOAQUING-FT73
-2. Abrir el proyecto
+# 📘 Manual de Usuario
 
-Abrir el archivo index.html en cualquier navegador moderno.
+## Instrucciones de uso
 
-Despliegue en GitHub Pages
-Pasos para desplegar
-Ir al repositorio en GitHub.
-Entrar en "Settings".
-Seleccionar "Pages".
-En "Source", elegir:
-Branch: main
-Folder: /root
-Guardar cambios.
+1. Seleccionar el tamaño de la paleta desde el menú desplegable.
+2. Elegir el formato de color (HEX, HSL o RGBA).
+3. Presionar el botón “Generar paleta”.
+4. Visualizar los colores generados automáticamente.
+5. Bloquear colores individuales si se desean conservar.
+6. Hacer clic sobre un color para copiar automáticamente su código.
 
-## Autor
+---
 
-Joaquín Gonzalez 
+# 📗 Manual Técnico
+
+## Decisiones técnicas implementadas
+
+- Uso de JavaScript para manipulación directa del DOM.
+- Generación de colores mediante cálculos aleatorios en HSL.
+- Conversión dinámica entre formatos de color.
+- Separación del proyecto en carpetas para facilitar escalabilidad.
+- Diseño orientado a un MVP funcional y extensible.
+- Render dinámico reutilizable para futuras mejoras.
+- Consideraciones de accesibilidad desde la estructura HTML.
+
+---
+
+# 📦 Ejecutar la aplicación en local
+
+## 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/JoaquinG-eng/color-palette-generator.git
+```
+
+## 2. Entrar al proyecto
+
+```bash
+cd color-palette-generator
+```
+
+## 3. Ejecutar la aplicación
+
+Abrir el archivo `index.html` en cualquier navegador moderno.
+
+---
+
+# 🌐 Despliegue en GitHub Pages
+
+## Pasos para desplegar
+
+1. Ir al repositorio en GitHub.
+2. Entrar en “Settings”.
+3. Seleccionar “Pages”.
+4. En “Source” elegir:
+   - Branch: `main`
+   - Folder: `/root`
+5. Guardar cambios.
+
+---
+
+# 👨‍💻 Autor
+
+Joaquín Gonzalez
