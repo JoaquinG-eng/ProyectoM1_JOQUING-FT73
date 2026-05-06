@@ -1,4 +1,4 @@
-# Generador de Paleta de Colores
+# Color-Palette-Generator
 
 Aplicación web interactiva desarrollada para generar paletas de colores automáticas y visualizar sus códigos en distintos formatos útiles para diseño y desarrollo web.
 
