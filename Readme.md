@@ -1,147 +1,135 @@
-# Color-Palette-Generator
+# Color Palette Generator 🎨
 
-Aplicación web interactiva desarrollada para generar paletas de colores automáticas y visualizar sus códigos en distintos formatos útiles para diseño y desarrollo web.
-
----
-
-# 🚀 Funcionalidades
-
-- Generación dinámica de paletas de colores
-- Soporte para formatos HEX, HSL y RGBA
-- Bloqueo individual de colores
-- Copiado automático al portapapeles
-- Interfaz responsive
-- Render dinámico según el tamaño seleccionado
-- Feedback visual e interacciones modernas
+Aplicación web interactiva para generar paletas de colores de forma aleatoria. Permite elegir el tamaño de la paleta, el formato del código de color, bloquear colores individuales y copiarlos al portapapeles con un click.
 
 ---
 
-# 🎨 Formatos de color disponibles
+## Demo
 
-- HEX
-- HSL
-- RGBA
+> Abrí `index.html` en tu navegador o desplegá en GitHub Pages.
 
 ---
 
-# 🛠 Tecnologías utilizadas
+## Funcionalidades
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-
----
-
-# ⚙ Aspectos técnicos destacados
-
-- Manipulación dinámica del DOM utilizando JavaScript
-- Arquitectura reutilizable para el renderizado de componentes
-- Generación armónica de colores mediante HSL
-- Conversión automática de HSL → HEX
-- Organización modular y escalable del proyecto
-- Diseño responsive utilizando Flexbox y Grid
-- Microinteracciones y animaciones modernas
+- Generación aleatoria de paletas de colores
+- Selección de tamaño: 6, 8 o 9 colores
+- Soporte para formatos **HEX** y **HSL**
+- Bloqueo individual de colores para conservarlos al regenerar
+- Copiado automático al portapapeles al hacer click en un color
+- Feedback visual con tooltips animados
+- Interfaz responsive — mobile first
+- Accesibilidad con `aria-label`, `aria-live` y navegación por teclado
 
 ---
 
-# ♿ Accesibilidad
+## Tecnologías
 
-## Implementaciones realizadas
+| Tecnología | Uso |
+|---|---|
+| HTML5 semántico | Estructura de la aplicación |
+| CSS3 | Estilos, animaciones y responsive design |
+| JavaScript ES6 | Lógica, manipulación del DOM y generación de colores |
 
-- Uso de HTML semántico
-- Navegación básica mediante teclado
-- Estados focus visibles
-- Uso de `aria-label` en elementos dinámicos
-- Actualización dinámica mediante `aria-live`
-
----
-
-# 🧠 Algoritmo de conversión HSL → HEX
-
-La aplicación genera colores aleatorios utilizando el modelo HSL (Hue, Saturation, Lightness) para obtener combinaciones visualmente armónicas.
-
-Posteriormente, cada color es convertido automáticamente a formato HEX mediante un algoritmo implementado en JavaScript.
-
-## Proceso de conversión
-
-1. Normalización de saturación y luminosidad.
-2. Cálculo temporal de componentes RGB.
-3. Conversión de RGB a hexadecimal.
-4. Construcción final del código HEX.
-
-### Ejemplo
-
-```txt
-HSL:
-hsl(210, 80%, 60%)
-
-HEX:
-#4da6ff
-```
+Sin frameworks ni librerías externas.
 
 ---
 
-# 📘 Manual de Usuario
-
-## Instrucciones de uso
-
-1. Seleccionar el tamaño de la paleta desde el menú desplegable.
-2. Elegir el formato de color (HEX, HSL o RGBA).
-3. Presionar el botón “Generar paleta”.
-4. Visualizar los colores generados automáticamente.
-5. Bloquear colores individuales si se desean conservar.
-6. Hacer clic sobre un color para copiar automáticamente su código.
-
----
-
-# 📗 Manual Técnico
-
-## Decisiones técnicas implementadas
-
-- Uso de JavaScript para manipulación directa del DOM.
-- Generación de colores mediante cálculos aleatorios en HSL.
-- Conversión dinámica entre formatos de color.
-- Separación del proyecto en carpetas para facilitar escalabilidad.
-- Diseño orientado a un MVP funcional y extensible.
-- Render dinámico reutilizable para futuras mejoras.
-- Consideraciones de accesibilidad desde la estructura HTML.
-
----
-
-# 📦 Ejecutar la aplicación en local
-
-## 1. Clonar el repositorio
+## Cómo correr el proyecto
 
 ```bash
-git clone https://github.com/JoaquinG-eng/color-palette-generator.git
+
+git clone https://github.com/tu-usuario/color-palette-generator
+
+
 ```
 
-## 2. Entrar al proyecto
-
-```bash
-cd color-palette-generator
-```
-
-## 3. Ejecutar la aplicación
-
-Abrir el archivo `index.html` en cualquier navegador moderno.
+No requiere instalación ni servidor.
 
 ---
 
-# 🌐 Despliegue en GitHub Pages
+## Estructura del proyecto
 
-## Pasos para desplegar
+```
+/
+├── index.html
+├── CSS/
+│   └── style.css
+├── JS/
+│   └── script.js
+├── ASSETS/
+│   └── capturas/
+│       ├── screen1.png
+│       ├── screen2.png
+│       ├── screen3.png
+│       └── screen4.png
+└── README.md
+```
 
-1. Ir al repositorio en GitHub.
-2. Entrar en “Settings”.
-3. Seleccionar “Pages”.
-4. En “Source” elegir:
+---
+
+## Capturas de pantalla
+
+### Vista principal
+![Paleta generada](ASSETS/capturas/screen5.png)
+
+### Colores bloqueados
+![Colores bloqueados](ASSETS/capturas/screen6.png)
+
+### Formato HSL
+![Formato HSL](ASSETS/capturas/screen7.png)
+
+### Vista mobile
+![Mobile](ASSETS/capturas/screen8.png)
+
+---
+
+## Aspectos técnicos destacados
+
+### Generación armónica de colores con HSL
+
+Los colores se generan en el modelo HSL para garantizar combinaciones visualmente equilibradas. La saturación y luminosidad están acotadas a rangos que evitan colores demasiado apagados o demasiado brillantes:
+
+```javascript
+const h = Math.floor(Math.random() * 360);      
+const s = Math.floor(Math.random() * 50) + 50;  
+const l = Math.floor(Math.random() * 30) + 40;  
+```
+
+### Conversión HSL → HEX
+
+La conversión se hace matemáticamente sin librerías. El proceso normaliza los valores, calcula los componentes RGB intermedios y los convierte a hexadecimal:
+
+```
+hsl(210, 80%, 60%) → #4da6ff
+```
+
+### Sistema de bloqueo de colores
+
+Al regenerar la paleta, los colores bloqueados se conservan en su posición. Se guardan en un array antes de limpiar el DOM y se reutilizan al construir la nueva paleta.
+
+### Accesibilidad
+
+- HTML semántico con `<header>`, `<main>`, `<section>`, `<footer>`
+- `aria-label` en controles y contenedor de paleta
+- `aria-live="polite"` en la sección de paleta para lectores de pantalla
+- `aria-label` dinámico en botones de bloqueo (cambia entre "Bloquear" y "Desbloquear")
+- Navegación por teclado con `Enter` y `Space` en botones de bloqueo
+- Estados `focus` visibles
+
+---
+
+## Deploy en GitHub Pages
+
+1. Ir al repositorio en GitHub
+2. Entrar en **Settings → Pages**
+3. En **Source** elegir:
    - Branch: `main`
    - Folder: `/root`
-5. Guardar cambios.
+4. Guardar — GitHub Pages genera el link automáticamente
 
 ---
 
-# 👨‍💻 Autor
+## Autor
 
-Joaquín Gonzalez
+**Joaquín González**
