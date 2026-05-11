@@ -39,7 +39,7 @@ Sin frameworks ni librerías externas.
 
 ```bash
 
-git clone https://github.com/tu-usuario/color-palette-generator
+git clone: https://github.com/JoaquinG-eng/Color-Palette-Generator.git
 
 
 ```
