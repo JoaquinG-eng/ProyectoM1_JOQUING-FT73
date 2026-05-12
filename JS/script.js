@@ -53,17 +53,12 @@ formatSelect.addEventListener("change", () => {
 // =========================
 
 function randomColor() {
+  const h = Math.floor(Math.random() * 360);
+  const s = Math.floor(Math.random() * 25) + 35; // antes 50+50, ahora 35-60
+  const l = Math.floor(Math.random() * 20) + 38; // antes 40+30, ahora 38-58
 
-    const h = Math.floor(Math.random() * 360);
-    const s = Math.floor(Math.random() * 50) + 50;
-    const l = Math.floor(Math.random() * 30) + 40;
-
-    const hsl = `hsl(${h}, ${s}%, ${l}%)`;
-
-    return {
-        hsl,
-        hex: hslToHex(h, s, l)
-    };
+  const hsl = `hsl(${h}, ${s}%, ${l}%)`;
+  return { hsl, hex: hslToHex(h, s, l) };
 }
 
 

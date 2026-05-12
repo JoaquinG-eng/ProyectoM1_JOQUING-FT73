@@ -3,58 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generador de Paleta de Colores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>Paleta de Colores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="CSS/style.css" />
 </head>
-
 <body>
 
-  <header>
-    <h1>Generador de Paleta de Colores</h1>
-    <p>Elegí el tamaño y creá tu paleta única</p>
+  <div id="global-tooltip"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-text">
+        <h1>Color Palette</h1>
+        <p>Generá, bloqueá y exportá paletas únicas</p>
+      </div>
+      <div class="controls">
+        <div class="control-group">
+          <label for="paletteSize">Tamaño</label>
+          <select id="paletteSize">
+            <option value="6">6 colores</option>
+            <option value="8">8 colores</option>
+            <option value="9">9 colores</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="formatSelect">Formato</label>
+          <select id="formatSelect">
+            <option value="hex">HEX</option>
+            <option value="hsl">HSL</option>
+          </select>
+        </div>
+        <button id="generateBtn" type="button">
+          <span>↻</span> Generar
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-
-    <section class="controls" aria-label="Controles de la paleta">
-
-      <label for="paletteSize">Tamaño de la paleta:</label>
-      <select id="paletteSize">
-        <option value="6">6 colores</option>
-        <option value="8">8 colores</option>
-        <option value="9">9 colores</option>
-      </select>
-
-      <label for="formatSelect">Formato:</label>
-      <select id="formatSelect">
-        <option value="hex">HEX</option>
-        <option value="hsl">HSL</option>
-      </select>
-
-      <button id="generateBtn" type="button">
-        Generar paleta
-      </button>
-
-    </section>
-
+  <main class="main">
     <section id="palette" aria-live="polite" aria-label="Paleta generada"></section>
-
-    <section class="preview-guide">
-      <img
-        src="ASSETS/capturas/preview.png"
-        alt="Guía de uso de la aplicación"
-        class="preview-img"
-      />
-    </section>
-
   </main>
 
-  <footer>
-    <p>Generador de Paleta de Colores — Joaquín González</p>
+  <footer class="footer">
+    <p>Color Palette — Joaquín González</p>
   </footer>
 
   <script src="JS/script.js"></script>
-
 </body>
 </html>
