@@ -99,7 +99,7 @@ Al regenerar, los colores bloqueados se conservan en su posición. Se guardan en
    - Branch: `main`
    - Folder: `/ (root)`
 3. Guardar — el link se genera automáticamente
-
+4.  https://joaquing-eng.github.io/Color-Palette-Generator/
 ---
 
 ## Autor
